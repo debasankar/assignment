@@ -16,12 +16,14 @@ public class Car implements Serializable {
 	private String make;
 	private String model;
 
+	private Car(){};
+	
+	public Car(String plateNo){
+		this.plateNo = plateNo;
+	}
+	
 	public String getPlateNo() {
 		return plateNo;
-	}
-
-	public void setPlateNo(String plateNo) {
-		this.plateNo = plateNo;
 	}
 
 	public String getColor() {
@@ -78,4 +80,5 @@ public class Car implements Serializable {
 		return true;
 	}
 
+	
 }

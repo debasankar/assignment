@@ -1,49 +1,59 @@
 package com.tf.app.domain.model;
 
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
-
 public class Road {
 	private String name;
-    private Queue<Car> vehicleQ = new LinkedBlockingQueue<Car> ();
+    private VehicleQ<Car> carQ = new VehicleQ<Car>();
     private Direction directn;
 
     private Road(){};
     
+    
+    /**
+     * Creates a new road with no cars on it.
+     * @param directn Direction of road flow.
+     * @param name Name of the road
+     */
     public Road(String name,Direction directn){
     	this.name = name;
     	this.directn= directn;    	
     }
         
+    /**
+     * @return The flow of this road.
+     */
     public Direction getDirection() {
         return directn;
     }
    
+    /**
+     * @return The name of this road.
+     */
     public String getName() {
         return name;
     }
     
     public void addCar(Car c) {
-        if (vehicleQ.contains(c)) {
-            throw new IllegalArgumentException("vehicle is already on this road.");
+        if (carQ.cotains(c)) {
+            throw new IllegalArgumentException("Cars is already on this road.");
         }        
-        vehicleQ.add(c);
+        carQ.add(c);
     }    
+   
     public void removeCar(Car c) {
-        if (vehicleQ.contains(c)) {
-        	vehicleQ.remove(c);
+        if (carQ.cotains(c)) {
+        	carQ.remove(c);
         }
     }    
     
+    public void removeCar(int position) {
+        	carQ.remove(position);
+    }    
+    
     public void removeCar() {        
-    	vehicleQ.remove();       
+    	carQ.remove();       
     }
 
-    public int getTotalVehicles() {
-        return vehicleQ.size();
+    public int getTotalCars() {
+        return carQ.getTotal();
     }
-    
-    
-   
-	
 }
