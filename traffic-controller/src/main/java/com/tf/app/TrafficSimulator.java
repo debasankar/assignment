@@ -41,10 +41,7 @@ public class TrafficSimulator {
 			.ifPresent(result -> System.out.println(clock + "  - " + result));
 
 			if (waitTime > 0) {
-				try {
-					Thread.sleep(waitTime);
-				} catch (Exception ex) {
-				}
+			  Thread.sleep(waitTime);
 			}
 			clock++;
 		} // end of loop
